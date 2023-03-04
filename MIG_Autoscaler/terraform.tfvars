@@ -1,0 +1,1 @@
+zone = "europe-west1-a"
