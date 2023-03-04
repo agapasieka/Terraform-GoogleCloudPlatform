@@ -1,0 +1,7 @@
+*.png
+.terraform
+.terraform.lock.hcl
+.DS_Store
+tfplan
+provider.tf.bak
+.venv
