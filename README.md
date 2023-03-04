@@ -3,7 +3,7 @@
 
 ![img](Terraform_gcp.png)
 
-![img](Terraform_gcp.png)
+
 
 
 
