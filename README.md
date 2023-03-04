@@ -1,6 +1,6 @@
 # Google Cloud Platform with Terraform projects
 
-![img](Terraform_gcp.jpeg)
+![img](Terraform_gcp.png)
 
 
 
