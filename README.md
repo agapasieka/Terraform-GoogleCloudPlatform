@@ -2,7 +2,7 @@
 
 ![img](Terraform_gcp.jpeg)
 
-![img](Google-Cloud-Logo.png)  ![img](terraform-hashicorp-logo.png)
+![img](Google-Cloud-Logo.png) ![img](terraform-hashicorp-logo.png)
 
 
 1. Serverless VPC Connector
