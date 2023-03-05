@@ -23,20 +23,26 @@ To test this deployment, we will build a docker image using python flask applica
 
     a. Change directory
     * cd ifconfig
+
     b. Create environment variables for the region, project ID
-    * export REGION=<enter region>
-    * export PROJECT_ID=<enter project ID>
+    * export REGION=enter region
+    * export PROJECT_ID=enter project ID
+
     c. Configure Docker authentication for the Artifact Registry
     * gcloud auth configure-docker ${REGION}-docker.pkg.dev
+
     d. Enable Cloud Build API
     * gcloud services enable cloudbuild.googleapis.com
+
     e. Start the image build process
     * gcloud builds submit --project ${PROJECT_ID}/ 
       --gcs-log-dir=gs://${PROJECT_ID}-bucket/ 
       --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs/
       --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
+
     f. Change directory
     * cd ..
+
     g. Note down the image to be used in later stage
 
 3. Deploy Serverless VPC Connector
@@ -49,8 +55,10 @@ To test this deployment, we will build a docker image using python flask applica
     * terraform apply
 
 6. Test ifconfig app
+
     a. SSH to sso-serverless-lab-vm
     * gcloud compute ssh vm instance --zone zone --tunnel-through-iap
+    
     b. Run curl command with cloud run url
     * curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" https://cloudrun-url
 
