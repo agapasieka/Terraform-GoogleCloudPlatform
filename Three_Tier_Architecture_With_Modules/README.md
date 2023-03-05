@@ -1,3 +1,5 @@
+# Three-tier architecture
+
 ![img](modules-diagram.png)
 
 Deploy a three-tier architecture consisting of a Load Balancer, a managed instance group (MIG) and Storage Bucket using Terraform public modules with input variables for custom builds. 
