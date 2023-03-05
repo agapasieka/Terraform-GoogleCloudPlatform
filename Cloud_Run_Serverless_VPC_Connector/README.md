@@ -10,6 +10,7 @@ To test this deployment, we will build a docker image using python flask applica
 
 # This deployment needs to be done in stages - targeted deploymenmt
 1. Deploy resources needed to build the docker image
+   
    a. Create a bucket: 
     * terraform apply -target="google_storage_bucket.bucket"
     * terraform apply -target="google_storage_bucket_object.temp_logs"
@@ -19,23 +20,24 @@ To test this deployment, we will build a docker image using python flask applica
     * terraform apply -target="google_artifact_registry_repository.repo"
 
 2. Deploy docker image 
-    # Change directory
+
+    a. Change directory
     * cd ifconfig
-    # Create environment variables for the region, project ID
+    b. Create environment variables for the region, project ID
     * export REGION=<enter region>
     * export PROJECT_ID=<enter project ID>
-    # Configure Docker authentication for the Artifact Registry
+    c. Configure Docker authentication for the Artifact Registry
     * gcloud auth configure-docker ${REGION}-docker.pkg.dev
-    # Enable Cloud Build API
+    d. Enable Cloud Build API
     * gcloud services enable cloudbuild.googleapis.com
-    # Start the image build process
+    e. Start the image build process
     * gcloud builds submit --project ${PROJECT_ID}/ 
       --gcs-log-dir=gs://${PROJECT_ID}-bucket/ 
       --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs/
       --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
-    # Change directory
+    f. Change directory
     * cd ..
-    # Note down the image to be used in later stage
+    g. Note down the image to be used in later stage
 
 3. Deploy Serverless VPC Connector
     * terraform apply -target="google_project_service.vpcaccess"
@@ -47,9 +49,9 @@ To test this deployment, we will build a docker image using python flask applica
     * terraform apply
 
 6. Test ifconfig app
-    # SSH to sso-serverless-lab-vm
+    a. SSH to sso-serverless-lab-vm
     * gcloud compute ssh vm instance --zone zone --tunnel-through-iap
-    # Run curl command with cloud run url
+    b. Run curl command with cloud run url
     * curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" https://cloudrun-url
 
 After deploying Clour Run with Serverless VPC Connector, ifconfig app returns CLoud NAT's Outbound IP. 
