@@ -8,7 +8,7 @@ This diagram is presenting how the connector will allow the private cloud run se
 
 To test this deployment, we will build a docker image using python flask application. The app queries https://ifconfig.me/ip and sends its result back. We will use this image to deploy a private cloud run service.
 
-# This deployment needs to be done in stages - targeted deploymenmt
+# This deployment needs to be done in stages (targeted deployment) and we will utilize input variables for custom builds
 1. Deploy resources needed to build the docker image
    
    a. Create a bucket: 
@@ -35,8 +35,9 @@ To test this deployment, we will build a docker image using python flask applica
     * gcloud services enable cloudbuild.googleapis.com
 
     e. Start the image build process
-    * gcloud builds submit --project ${PROJECT_ID} --gcs-log-dir=gs://${PROJECT_ID}-bucket --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
-
+    * ```
+    gcloud builds submit --project ${PROJECT_ID} --gcs-log-dir=gs://${PROJECT_ID}-bucket --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
+    ```
     f. Change directory
     * cd ..
 
