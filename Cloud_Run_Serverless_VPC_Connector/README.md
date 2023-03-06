@@ -63,7 +63,7 @@ To test this deployment, we will build a docker image using python flask applica
     ```
 6. Test ifconfig app
 
-    a. SSH to sso-serverless-lab-vm
+    a. SSH to lab-vm
     ```
      gcloud compute ssh vm instance --zone zone --tunnel-through-iap
     ```
