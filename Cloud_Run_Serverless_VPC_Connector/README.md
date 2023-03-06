@@ -35,7 +35,7 @@ To test this deployment, we will build a docker image using python flask applica
     * gcloud services enable cloudbuild.googleapis.com
 
     e. Start the image build process
-    * ```
+    ```
     gcloud builds submit --project ${PROJECT_ID} --gcs-log-dir=gs://${PROJECT_ID}-bucket --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
     ```
     f. Change directory
