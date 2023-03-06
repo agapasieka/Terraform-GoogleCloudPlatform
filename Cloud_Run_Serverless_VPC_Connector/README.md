@@ -39,14 +39,16 @@ To test this deployment, we will build a docker image using python flask applica
     gcloud builds submit --project ${PROJECT_ID} --gcs-log-dir=gs://${PROJECT_ID}-bucket --gcs-source-staging-dir=gs://${PROJECT_ID}-bucket/temp-logs --tag ${REGION}-docker.pkg.dev/${PROJECT_ID}/images/image:tag1 . 
     ```
     f. Change directory
-    * cd ..
-
+    ```
+     cd ..
+    ```
     g. Note down the image to be used in later stage
 
 3. Deploy Serverless VPC Connector
-    * terraform apply -target="google_project_service.vpcaccess"
-    * terraform apply -target="module.serverless-connector"
-
+    ```
+     terraform apply -target="google_project_service.vpcaccess"
+     terraform apply -target="module.serverless-connector"
+    ```
 4. Add docker image and serverless vpc connector in cloud run code
 
 5. Deploy the remaining resources
