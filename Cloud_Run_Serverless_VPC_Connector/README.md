@@ -11,7 +11,7 @@ To test this deployment, we will build a docker image using python flask applica
 # This deployment needs to be done in stages (targeted deployment) and we will utilize input variables for custom builds
 1. Deploy resources needed to build the docker image
    
-   a. Create a bucket: 
+   a. Create a bucket
    ```
      terraform apply -target="google_storage_bucket.bucket"
      terraform apply -target="google_storage_bucket_object.temp_logs"
