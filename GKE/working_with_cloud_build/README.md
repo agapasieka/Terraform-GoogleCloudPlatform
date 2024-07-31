@@ -8,7 +8,7 @@ gcloud services enable \
 ```
 2. Building containers with DockerFile and Cloud Build
 
-   2a. Create quickstart.sh file which will represent an application inside the container
+  2a. Create quickstart.sh file which will represent an application inside the container
   ```sh
   cat <<EOF > quickstart.sh
   #!/bin/sh
@@ -16,12 +16,12 @@ gcloud services enable \
   EOF
   ```  
 
- 2b. Create Dockerfile file and use it as a build configuration script with Cloud Build
- ```sh
- cat <<EOF > Dockerfile
- FROM alpine
- COPY quickstart.sh /
- CMD ["/quickstart.sh"]
- EOF
- ```
-2c. 
+  2b. Create Dockerfile file and use it as a build configuration script with Cloud Build
+  ```sh
+  cat <<EOF > Dockerfile
+  FROM alpine
+  COPY quickstart.sh /
+  CMD ["/quickstart.sh"]
+  EOF
+  ```
+  2c. 
