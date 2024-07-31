@@ -1,5 +1,7 @@
+## Overview
 In this lab you will build a Docker container image from provided code and a Dockerfile using Cloud Build. You will then upload the container to the Artifact Registry.
 
+<!-- GETTING STARTED -->
 ## Enable APIs
   ```sh
   gcloud services enable \
