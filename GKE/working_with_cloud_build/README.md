@@ -81,9 +81,50 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
  ```sh
    gcloud artifacts docker images list $REGION-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo
  ```
-6. 
 
+<!-- Task3 -->
+## Building and testing containers with a custom YAML configuration file and Cloud Build
 
+1. Alter the quickstart.sh file
+ ```sh
+  cat <<EOF > quickstart.sh
+    #!/bin/sh
+    if [ -z "$1" ]
+    then
+	     echo "Hello, world! The time is $(date)."
+	     exit 0
+    else
+	     exit 1
+    fi
+    EOF
+  ``` 
 
+2. Create a new custom cloud build configuration file called cloudbuild2.yaml. This has been slightly modified to demonstrate Cloud Build's ability to test the containers it has built.
+ ```sh
+ cat <<EOF > cloudbuild2.yaml
+    steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
+    - name: 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+      args: ['fail']
+    images:
+    - 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+  ```
 
+3.  Insert your region value into the yaml file
+  ```sh
+   sed -i "s/YourRegionHere/$REGION/g" cloudbuild2.yaml
+  ```
+
+4. Start a Cloud Build using cloudbuild2.yaml
+  ```sh
+  gcloud builds submit --config cloudbuild2.yaml
+  ```
+
+5. The output from the command ends with text like this:
+
+BUILD FAILURE: Build step failure: build step 1 "us-east1-docker.pkg.dev/qwiklabs-gcp-02-1c7ba5c697a0/quickstart-docker-repo/quickstart-image:tag1" failed: starting step container failed: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "fail": executable file not found in $PATH: unknown
+ERROR: (gcloud.builds.submit) build 96c4a454-be06-4010-aa7c-da57c14165f4 completed with status "FAILURE"
+
+## The End
 
