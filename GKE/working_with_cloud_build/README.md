@@ -73,9 +73,9 @@ EOF
   ```
 
 4. Start a Cloud Build using cloudbuild.yaml as the build configuration file
-    ```sh
+  ```sh
    gcloud builds submit --config cloudbuild.yaml
-   ```
+  ```
 
 5. Verify two versions of quickstart-image are now present in quickstart-docker-repo
  ```sh
