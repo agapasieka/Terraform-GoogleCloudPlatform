@@ -24,4 +24,7 @@ In this lab you will build a Docker container image from provided code and a Doc
     CMD ["/quickstart.sh"]
     EOF
   ```
-  
+3. Make the quickstart.sh script executable
+  ```sh
+  chmod +x quickstart.sh
+  ``` 
