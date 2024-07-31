@@ -7,13 +7,15 @@ gcloud services enable \
  artifactregistry.googleapis.com
 ```
 2. Building containers with DockerFile and Cloud Build
-  2a. Create quickstart.sh file which will represent an application inside the container
+
+   2a. Create quickstart.sh file which will represent an application inside the container
   ```sh
   cat <<EOF > quickstart.sh
   #!/bin/sh
   echo "Hello, world! The time is $(date)."
   EOF
   ```  
+
  2b. Create Dockerfile file and use it as a build configuration script with Cloud Build
  ```sh
  cat <<EOF > Dockerfile
