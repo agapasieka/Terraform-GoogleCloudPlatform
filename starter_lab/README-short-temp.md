@@ -54,12 +54,12 @@
    
   ```
 
-4. Start a Cloud Build using cloudbuild.yaml as the build configuration file
+4. 
   ```sh
    g
   ```
 
-5. Verify two versions of quickstart-image are now present in quickstart-docker-repo
+5. 
  ```sh
    
  ```
