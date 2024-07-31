@@ -28,31 +28,55 @@ export CLUSTER=
   gcloud container clusters get-credentials $CLUSTER --region $REGION
   ```
 
-## Create a sample deployment manifest called nginx-deployment.yaml. 
-## This deployment is configured to run three Pod replicas with a single nginx container in each Pod listening on TCP port 80.
+<!-- Task4 -->
+## Create a sample deployment manifest called nginx-deployment.yaml
+This deployment is configured to run three Pod replicas with a single nginx container in each Pod listening on TCP port 80.
   ```sh
-  
+  cat << EOF > nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+EOF
   ``` 
 
-4. 
+<!-- Task5 -->
+## Deploy the manifest
   ```sh
-
+kubectl apply -f ./nginx-deployment.yaml
   ```
 
-5. 
+<!-- Task6 -->
+## View a list of deployments
   ```sh
-  
+  kubectl get deployments
   ``` 
 
-<!-- Task3 -->
-## 
-
-1. 
+<!-- Task7 -->
+## Scale udown the number of Pods in deployments
   ```sh
-
+kubectl scale --replicas=1 deployment nginx-deployment
   ```
 
-2. 
+<!-- Task8 -->
+## Trigger a deployment rollout and a deployment rollback
  ```sh
   
  ```   
