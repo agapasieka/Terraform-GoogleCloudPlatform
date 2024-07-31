@@ -8,7 +8,7 @@ In this lab you will build a Docker container image from provided code and a Doc
   ```
 2. Building containers with DockerFile and Cloud Build
 
-  2a. Create quickstart.sh file which will represent an application inside the container
+  a. Create quickstart.sh file which will represent an application inside the container
     ```sh
     cat <<EOF > quickstart.sh
     #!/bin/sh
@@ -16,7 +16,7 @@ In this lab you will build a Docker container image from provided code and a Doc
     EOF
     ```  
 
-  2b. Create Dockerfile file and use it as a build configuration script with Cloud Build
+  b. Create Dockerfile file and use it as a build configuration script with Cloud Build
     ```sh
     cat <<EOF > Dockerfile
     FROM alpine
