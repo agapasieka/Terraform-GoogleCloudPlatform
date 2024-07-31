@@ -53,12 +53,12 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
 
 1. Create file called cloudbuild.yaml
   ```sh
-    cat <<EOF > cloudbuild.yaml
-    steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
-    images:
-    - 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+  cat <<EOF > cloudbuild.yaml
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
+images:
+- 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
 EOF
   ```
 
