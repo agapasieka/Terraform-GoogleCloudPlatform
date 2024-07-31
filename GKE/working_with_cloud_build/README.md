@@ -102,13 +102,13 @@ EOF
 2. Create a new custom cloud build configuration file called cloudbuild2.yaml. This has been slightly modified to demonstrate Cloud Build's ability to test the containers it has built.
  ```sh
  cat <<EOF > cloudbuild2.yaml
-    steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
-    - name: 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
-      args: ['fail']
-    images:
-    - 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+     args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1', '.' ]
+- name: 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1'
+     args: ['fail']
+images:
+- 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1'
 EOF
   ```
 
