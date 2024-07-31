@@ -104,9 +104,9 @@ EOF
  cat <<EOF > cloudbuild2.yaml
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1', '.' ]
+   args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1', '.' ]
 - name: 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1'
-  args: ['fail']
+   args: ['fail']
 images:
 - 'YourRegionHere-docker.pkg.dev/${DEVSHELL_PROJECT_ID}/quickstart-docker-repo/quickstart-image:tag1'
 EOF
