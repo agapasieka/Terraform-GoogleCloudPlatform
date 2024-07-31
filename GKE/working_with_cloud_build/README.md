@@ -16,10 +16,10 @@ Follow the steps in Cloud Shell or using local terminal of your choice.
 
 1. Create quickstart.sh file which will represent an application inside the container
   ```sh
-    cat <<EOF > quickstart.sh
-    #!/bin/sh
-    echo "Hello, world! The time is $(date)."
-    EOF
+    cat << EOF > quickstart.sh
+        #!/bin/sh
+        echo "Hello, world! The time is $(date)."
+EOF
   ```  
 
 2. Create Dockerfile file and use it as a build configuration script with Cloud Build
@@ -28,7 +28,7 @@ Follow the steps in Cloud Shell or using local terminal of your choice.
     FROM alpine
     COPY quickstart.sh /
     CMD ["/quickstart.sh"]
-    EOF
+EOF
   ```
 
 3. Make the quickstart.sh script executable
