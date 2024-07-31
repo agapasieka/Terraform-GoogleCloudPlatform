@@ -59,7 +59,7 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
       args: [ 'build', '-t', 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1', '.' ]
     images:
     - 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
-    EOF
+EOF
   ```
 
 2. Insert the region you specified in variable earlier into the yaml file
@@ -96,7 +96,7 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
     else
 	     exit 1
     fi
-    EOF
+EOF
   ``` 
 
 2. Create a new custom cloud build configuration file called cloudbuild2.yaml. This has been slightly modified to demonstrate Cloud Build's ability to test the containers it has built.
@@ -109,6 +109,7 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
       args: ['fail']
     images:
     - 'YourRegionHere-docker.pkg.dev/$PROJECT_ID/quickstart-docker-repo/quickstart-image:tag1'
+EOF
   ```
 
 3.  Insert your region value into the yaml file
