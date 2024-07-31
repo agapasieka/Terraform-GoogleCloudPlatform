@@ -67,12 +67,12 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
   sed -i "s/YourRegionHere/$REGION/g" cloudbuild.yaml
  ```   
 
-3. Verify the Region was inserted
+3. Verify the region was inserted
   ```sh
    cat cloudbuild.yaml
   ```
 
-4. start a Cloud Build using cloudbuild.yaml as the build configuration file
+4. Start a Cloud Build using cloudbuild.yaml as the build configuration file
     ```sh
    gcloud builds submit --config cloudbuild.yaml
    ```
