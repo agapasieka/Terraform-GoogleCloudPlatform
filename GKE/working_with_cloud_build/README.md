@@ -62,7 +62,7 @@ gcloud artifacts repositories create quickstart-docker-repo --repository-format=
     EOF
   ```
 
-2. Insert the region you setup in variable earlier into the yaml file
+2. Insert the region you specified in variable earlier into the yaml file
  ```sh
   sed -i "s/YourRegionHere/$REGION/g" cloudbuild.yaml
  ```   
