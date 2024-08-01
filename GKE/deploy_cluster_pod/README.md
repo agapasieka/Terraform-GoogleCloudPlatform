@@ -86,7 +86,15 @@ kubectl cp ~/test.html $nginx_pod:/usr/share/nginx/html/test.html
    curl http://$EXTERNAL_IP/test.html
   ```
 
-
+<!-- Task14 -->
+## Delete created resources 
+  ```sh
+kubectl delete -f deployment nginx
+  ```
+## Delete cluster
+```sh
+gcloud container clusters delete $CLUSTER --zone $ZONE
+```
 
 
 ## The End
