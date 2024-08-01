@@ -125,14 +125,34 @@ EOF
 kubectl apply -f example-cronjob.yaml
   ```
 
-3.  
+<!-- Task13 -->
+##  Get a list of the Jobs in the cluster
   ```sh
-   
+ kubectl get jobs  
   ```
 
-4. 
+<!-- Task14 -->
+##  Check the status of this Job
   ```sh
-  
+kubectl describe job [job_name]  
+  ```
+
+<!-- Task14 -->
+##  View the output of the Job by querying the logs for the Pod
+  ```sh
+kubectl logs [POD-NAME]
+  ```
+
+<!-- Task15 -->
+##  Delete all job
+  ```sh
+kubectl delete cronjob hello
+  ```
+
+<!-- Task15 -->
+## Verify that the jobs were deleted
+ ```sh
+kubectl get jobs
   ```
 
 
