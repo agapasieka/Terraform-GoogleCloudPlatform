@@ -37,9 +37,9 @@ This deployment is configured to run three Pod replicas with a single nginx cont
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
+   name: nginx-deployment
+   labels:
+     app: nginx
 spec:
   replicas: 3
   selector:
