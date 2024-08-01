@@ -127,5 +127,12 @@ EOF
 BUILD FAILURE: Build step failure: build step 1 "us-east1-docker.pkg.dev/qwiklabs-gcp-02-1c7ba5c697a0/quickstart-docker-repo/quickstart-image:tag1" failed: starting step container failed: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "fail": executable file not found in $PATH: unknown
 ERROR: (gcloud.builds.submit) build 96c4a454-be06-4010-aa7c-da57c14165f4 completed with status "FAILURE"
 
+
+<!-- Task4 -->
+## Delete created resources 
+  ```sh
+gcloud artifacts repositories delete quickstart-docker-repo --location=$REGION
+  ```
+
 ## The End
 
