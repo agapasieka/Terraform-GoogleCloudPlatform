@@ -52,54 +52,77 @@ EOF
   
   ``` 
 
-4. 
+<!-- Task5 -->
+## Create a Job from this file
   ```sh
-
+kubectl apply -f example-job.yaml
   ```
 
-5. 
+<!-- Task6 -->
+## Check the status of this Job
   ```sh
-  
+kubectl describe job example-job  
   ``` 
 
-<!-- Task3 -->
-## 
-
-1. 
+<!-- Task7 -->
+## View all Pod resources in your cluster, including Pods created by the Job which have completed
   ```sh
-
+kubectl get pods
   ```
 
-2. 
+<!-- Task7 -->
+## View all Pod resources in your cluster, including Pods created by the Job which have completed
  ```sh
-  
+kubectl get pods  
  ```   
 
-3. 
+<!-- Task8 -->
+## Clean up and delete the Job
   ```sh
-   
+kubectl get jobs   
   ```
 
-4. 
+<!-- Task9 -->
+## Retrieve the log file from the Pod that ran the Job
   ```sh
-   
+kubectl logs [POD-NAME]   
   ```
 
-5. 
+<!-- Task10 -->
+## Delete the Job
  ```sh
-   
+kubectl delete job example-job   
  ```
 
-<!-- Task3 -->
-## 
-1. 
+<!-- Task11 -->
+## Define a CronJob manifest called example-cronjob.yaml to deploy a new container every minute that prints the time, date and "Hello, World!".
  ```sh
- 
+cat << EOF > example-cronjob.yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - date; echo "Hello, World!"
+          restartPolicy: OnFailure
+EOF 
   ``` 
 
-2. 
+<!-- Task12 -->
+## Create a Job from this file
  ```sh
-
+kubectl apply -f example-cronjob.yaml
   ```
 
 3.  
