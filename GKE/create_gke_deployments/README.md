@@ -7,6 +7,7 @@ In this lab, you learn how to perform the following tasks:
 * Trigger deployment rollout (rolling update to new version) and rollbacks.
 * Perform a Canary deployment.
 
+Perform steps in cloid shell or terminal of your choice. 
 
 <!-- Task1 -->
 ## Set the environment variable for the zone and cluster name
@@ -76,48 +77,175 @@ kubectl scale --replicas=1 deployment nginx-deployment
   ```
 
 <!-- Task8 -->
-## Trigger a deployment rollout and a deployment rollback
+## Trigger a deployment rollout by updating the version of nginx in the deployment
  ```sh
-  
+kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.9.1 
  ```   
 
-3. 
+<!-- Task9 -->
+## Annotate the rollout with details on the change
   ```sh
-   
+kubectl annotate deployment nginx-deployment kubernetes.io/change-cause="version change to 1.9.1" --overwrite=true
   ```
 
-4. 
+<!-- Task10 -->
+## View the rollout status
   ```sh
-   
+kubectl rollout status deployment.v1.apps/nginx-deployment   
   ```
 
-5. 
+<!-- Task11 -->
+## Verify the change
  ```sh
-   
+kubectl get deployments   
  ```
 
-<!-- Task3 -->
-## 
-1. 
+<!-- Task12 -->
+## View the rollout history of the deployment
  ```sh
- 
+kubectl rollout history deployment nginx-deployment 
   ``` 
 
-2. 
+<!-- Task13 -->
+## Trigger a deployment rollback
  ```sh
-
+kubectl rollout undo deployments nginx-deployment
   ```
 
-3.  
+<!-- Task14 -->
+## View the updated rollout history of the deployment 
   ```sh
-   
+kubectl rollout history deployment nginx-deployment   
   ```
 
-4. 
+<!-- Task15 -->
+## View the details of the latest deployment revision
   ```sh
-  
+kubectl rollout history deployment/nginx-deployment --revision=3  
   ```
 
+<!-- Task16 -->
+## Define the service type in the manifest
+In this task, you create and verify a service that controls inbound traffic to an application. Services can be configured as ClusterIP, NodePort or LoadBalancer types. 
+Create manifest file called service-nginx.yaml that deploys a LoadBalancer service type. 
+  ```sh
+cat << EOF > service-nginx.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 60000
+    targetPort: 80
+EOF   
+  ```
+This service is configured to distribute inbound traffic on TCP port 60000 to port 80 on any containers that have the label app: nginx.
+
+<!-- Task17 -->
+## Deploy your manifest
+  ```sh
+kubectl apply -f ./service-nginx.yaml
+  ```
+
+<!-- Task17 -->
+## Verify the LoadBalancer creation
+  ```sh
+kubectl get service nginx
+  ```
+Output:
+
+NAME      CLUSTER_IP      EXTERNAL_IP      PORT(S)   SELECTOR    AGE
+nginx     10.X.X.X        X.X.X.X          60000/TCP    run=nginx   1m
+
+<!-- Task18 -->
+## Create a canary deployment file called nginx-canary.yaml to deploy a single pod running a newer version of nginx than your main deployment.
+  ```sh
+cat << EOF > nginx-canary.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-canary
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        track: canary
+        Version: 1.9.1
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.9.1
+        ports:
+        - containerPort: 80
+EOF
+  ```
+
+<!-- Task19 -->
+## Create the canary deployment based on the configuration file
+  ```sh
+kubectl apply -f ./nginx-canary.yaml
+  ```
+
+<!-- Task20 -->
+## Verify that both the nginx and the nginx-canary deployments are present
+  ```sh
+kubectl get deployments
+  ```
+
+<!-- Task21 -->
+## Scale down the primary deployment to 0 replicas
+  ```sh
+kubectl scale --replicas=0 deployment nginx-deployment
+  ```
+
+<!-- Task22 -->
+## Verify that the only running replica is now the Canary deployment
+  ```sh
+kubectl get deployments
+  ```
+
+<!-- Task23 -->
+## Set the sessionAffinity field to ClientIP in the specification of the service if you need a client's first request to determine which Pod will be used for all subsequent connections.
+  ```sh
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  type: LoadBalancer
+  sessionAffinity: ClientIP
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 60000
+    targetPort: 80
+  ```
+
+
+<!-- Task24 -->
+## Delete created resources 
+  ```sh
+kubectl delete -f ./nginx-deployment.yaml
+kubectl delete -f ./service-nginx.yaml
+kubectl delete -f ./nginx-canary.yaml
+  ```
+## Delete cluster
+```sh
+gcloud container clusters delete $CLUSTER --region $REGION
+```
 
 
 ## The End
