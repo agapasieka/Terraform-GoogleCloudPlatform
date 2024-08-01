@@ -41,10 +41,10 @@ metadata:
     labels:
       app: nginx
 spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
+   replicas: 3
+   selector:
+     matchLabels:
+       app: nginx
   template:
     metadata:
       labels:
