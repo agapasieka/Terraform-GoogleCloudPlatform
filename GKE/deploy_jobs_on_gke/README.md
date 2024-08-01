@@ -144,7 +144,7 @@ kubectl logs [POD-NAME]
   ```
 
 <!-- Task15 -->
-##  Delete all job
+##  Delete all jobs
   ```sh
 kubectl delete cronjob hello
   ```
