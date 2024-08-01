@@ -7,7 +7,7 @@ In this lab, you learn how to perform the following tasks:
 * Trigger deployment rollout (rolling update to new version) and rollbacks.
 * Perform a Canary deployment.
 
-Perform steps in cloid shell or terminal of your choice. 
+Perform steps in cloud shell or terminal of your choice. 
 
 <!-- Task1 -->
 ## Set the environment variable for the zone and cluster name
