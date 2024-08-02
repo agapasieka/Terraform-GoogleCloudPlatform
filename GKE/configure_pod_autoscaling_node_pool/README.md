@@ -31,32 +31,34 @@ gcloud container clusters get-credentials $CLUSTER --zone $ZONE
 kubectl create -f web.yaml --save-config
   ``` 
 
-4. 
+<!-- Task5 -->
+## Create a service resource of type NodePort on port 8080 for the web deployment 
   ```sh
-
+kubectl expose deployment web --target-port=8080 --type=NodePort
   ```
 
-5. 
+<!-- Task5 -->
+## Verify that the service was created and that a node port was allocated
   ```sh
-  
+kubectl get service web  
   ``` 
 
-<!-- Task3 -->
-## 
-
-1. 
+<!-- Task6 -->
+## Configure autoscaling
+1. Get the list of deployments to determine whether your sample web application is still running
   ```sh
-
+kubectl get deployment
   ```
 
-2. 
+2. Configure autoscaling with a CPU utilization target of 1%
  ```sh
-  
+kubectl autoscale deployment web --max 4 --min 1 --cpu-percent 1  
  ```   
+The kubectl autoscale command creates a HorizontalPodAutoscaler object that targets a specified resource, called the scale target, and scales it as needed.
 
-3. 
+3. Get the list of HorizontalPodAutoscaler resources
   ```sh
-   
+kubectl get hpa   
   ```
 
 4. 
