@@ -18,11 +18,6 @@ variable "zones" {
   type        = list(any)
 }
 
-variable "company_name" {
-  description = "Company name"
-  type        = string
-}
-
 variable "network" {
   description = "GCP VPC network"
   type        = string
