@@ -9,7 +9,6 @@ module "cloud_run" {
   image        = "gcr.io/cloudrun/hello"
   members      = ["allUsers"]
   service_annotations = {
-    "run.googleapis.com/ingress" = "internal-and-cloud-load-balancing",
     "run.googleapis.com/ingress" = "internal-and-cloud-load-balancing"
   }
 }
