@@ -7,13 +7,14 @@ module "lb-http" {
 
   ssl                             = false
   https_redirect                  = false
+   
   backends = {
     default = {
-
+    enable_cdn = false
       groups = [
         {
           # Your serverless service should have a NEG created that's referenced here.
-          group = google_compute_region_network_endpoint_group.default.id
+          group = google_compute_region_network_endpoint_group.serverless_neg.id
         }
       ]
 
