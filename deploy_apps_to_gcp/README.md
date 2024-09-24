@@ -1,5 +1,6 @@
 <!-- Overview -->
 ## Overview
+
 In this lab, you will gain hands-on experience deploying a cloud-based application using Google Cloud Platform (GCP) services.
 You will learn to build and push container images to Google Artifact Registry using Docker, preparing their application for deployment.
 The lab will also introduce Google App Engine and Cloud Run, showcasing how to deploy containerized applications effortlessly while benefiting from automatic scaling and serverless capabilities.
