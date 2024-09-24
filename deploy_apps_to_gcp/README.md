@@ -1,16 +1,27 @@
 <!-- Overview -->
 ## Overview
-
+In this lab, you will gain hands-on experience deploying a cloud-based application using Google Cloud Platform (GCP) services.
+You will learn to build and push container images to Google Artifact Registry using Docker, preparing their application for deployment.
+The lab will also introduce Google App Engine and Cloud Run, showcasing how to deploy containerized applications effortlessly while benefiting from automatic scaling and serverless capabilities.
+Finally, the lab will demonstrate how to create a Kubernetes cluster, configure a Deployment resource to manage application instances, and expose the application using a Load Balancer Service.
 
 # Prerequisites
+* Google Cloud Platform (GCP) Account
+* IAM Permissions on GCP project:
+  * Viewer
+  * Editor
+  * Kubernetes Engine Admin
+  * Cloud Run Admin
+  * Cloud Build Editor
+* Google Cloud SDK (gcloud)
 * Docker 
 * Terraform
 
 <!-- Task1 -->
 ## Clone the code for this lab and change directory to delp_app_to_gcp/
   ```sh
-  git clone 
-  cd 
+  git clone https://github.com/agapasieka/Terraform-GoogleCloudPlatform.git
+  cd deploy_apps_to_gcp
   ```  
 
 <!-- Task2 -->
