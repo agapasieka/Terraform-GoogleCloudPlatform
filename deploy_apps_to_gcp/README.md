@@ -129,29 +129,37 @@ We will also build another Docker image using Cloud Build and store it in devops
   gcloud builds submit --tag $REGION-docker.pkg.dev/$DEVSHELL_PROJECT_ID/devops-repo/gke-image:v0.1 .
   ```
 
-In apps/gke-config/ directory locate file named 'kubernetes-config.yaml'. This YAML file defines two key resources: a Deployment and a Service. 
+In apps/gke-config/ directory locate file named 'kubernetes-config.yaml'. 
+This YAML file defines two key resources: a Deployment and a Service. 
 In **Deployment** section we are deploying 3 instances of our Python web app and specifying the image we just build. 
 A **Service** part provides an endpoint for accessing a set of pods, allowing for load balancing and discovery.
 
-4. To deploy our application run the following command.
+4. Add image to 'kubernetes-config.yaml'. Use nano or vim to edit the file.
+  ```sh
+  nano apps/gke-config/kubernetes-config.yaml
+  ```
+Look for line: <YOUR IMAGE PATH HERE> and replace with the image we just created. 
+Save the file by using Ctrl + X, Y, Enter
+
+5. To deploy our application run the following command.
   ```sh
     kubectl apply -f apps/gke-config/kubernetes-config.yaml
   ```
 
-5. Verify whether three instances of application have been created.
+6. Verify whether three instances of application have been created.
   ```sh
     kubectl get pods
   ```
 
-6. Verify the load balancer IP address to test the application.
+7. Verify the load balancer IP address to test the application.
   ```sh
     kubectl get services
   ```
 If the load balancer's external IP address says "pending", wait a few seconds and try again.
 
-7. To test the app, open the browser and use: http://EXTERNAL-IP:8080
+8. To test the app, open the browser and use: http://EXTERNAL-IP:8080
 
-8. Alternatively, test with curl.
+9. Alternatively, test with curl.
   ```sh
   curl -s http://EXTERNAL-IP:8080 | awk -F'<h1>|</h1>' '/<h1>/ {print $2}'
   ```
