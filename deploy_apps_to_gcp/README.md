@@ -65,6 +65,7 @@ We need the following config files:
 
 <!-- Task3 -->
 ## Deploy to App Engine 
+
 I will be using a similar app code for App Engine located in **apps/app-engine/** folder. I changed the body message to say: **Hello from App Engine** so we can be sure each deployment succeded. 
 
 Before we create any resources with terraform, verify the region defianed in **terraform.tfvars** file. I used **europe-west1** but you can use any region of your choice. 
@@ -83,9 +84,7 @@ To deploy to App Engine, we need to zip our code first and place it in the stora
   terraform init
   terraform apply
   ```   
-
 3. Now let's deploy the App Engine. Uncomment code in **app-engine.tf** and save the file.
-
   ```sh
  terraform apply  
   ```
@@ -99,18 +98,17 @@ To use Cloud Run, you need to build a Docker image again and store it in Artifac
 
 1. Let's first create an Artifact Registry repository named **devops-repo**. Uncomment code in **artifact-registry.tf** and save the file.
 
-
 2. Deploy with terraform
   ```sh
   terraform apply
   ``` 
-
+  
 3. Configure Docker to authenticate to the Artifact Registry Docker repository. I used **europe-west1** as my region for all resources but if you changed it in **provider.tf** in previous step, update it here too.
   ```sh
    export REGION=europe-west1
    gcloud auth configure-docker $REGION-docker.pkg.dev
   ```
-
+  
 4. Build the image for Cloud Run. This time we will use Google Cloud Build to submit a build and create a container image. Change directory to cd apps/cloud-run/.
   ```sh
   cd apps/cloud-run/
@@ -127,6 +125,7 @@ Wait for the deployment to finish. At the end terrafortm outputs the URL to a Cl
 
 <!-- Task5 -->
 ## Deploy to Kubernetes Engine
+
 To deploy an application to Kubernetes, you must first create the cluster. Next, you'll need to provide a configuration file to enable the deployment of your application to the cluster.
 We will also build another Docker image using Cloud Build and store it in devops-repo Artifact Registry. The Python app config files are located in apps/gke-config folder. 
 
@@ -193,6 +192,5 @@ If the load balancer's external IP address says **pending**, wait a few seconds 
 kubectl delete -f apps/gke-config/kubernetes-config.yaml
 terraform destroy
 ```
-
 
 ## The End

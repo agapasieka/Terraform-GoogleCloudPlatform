@@ -40,6 +40,7 @@
 #   delete_service_on_destroy = true
 # }
 
+
 # # Output the default service URL
 # output "app_engine_service_url" {
 #   value = "https://${google_app_engine_standard_app_version.v1.service}-dot-${google_app_engine_application.app.project}.appspot.com"

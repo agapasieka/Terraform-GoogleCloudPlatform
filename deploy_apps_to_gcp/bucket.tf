@@ -5,7 +5,6 @@
 # lifecycle {
 #     prevent_destroy = true
 #   }
-# }
 
 # # Creates a Google Cloud Storage bucket for storing application files
 # resource "google_storage_bucket" "app" {

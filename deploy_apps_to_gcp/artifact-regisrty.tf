@@ -13,4 +13,3 @@
 #   description   = "Docker repository"
 #   format        = "DOCKER"
 # }
-
