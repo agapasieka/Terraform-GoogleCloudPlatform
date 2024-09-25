@@ -19,7 +19,7 @@ Finally, the lab will demonstrate how to create a Kubernetes cluster, configure 
 * Terraform
 
 <!-- Task1 -->
-## Clone the code for this lab and change directory to delp_app_to_gcp/
+## Clone the code for this lab and change directory to deploy_app_to_gcp/
   ```sh
   git clone https://github.com/agapasieka/Terraform-GoogleCloudPlatform.git
   cd Terraform-GoogleCloudPlatform/deploy_apps_to_gcp
