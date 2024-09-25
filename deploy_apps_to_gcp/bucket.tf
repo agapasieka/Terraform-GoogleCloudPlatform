@@ -11,7 +11,7 @@
 #   name          = "${var.project_id}-${random_id.app.hex}"
 #   location      = "EU"
 #   force_destroy = true
-
+#
 #   versioning {
 #     enabled = true
 #   }
