@@ -155,7 +155,7 @@ A **Service** part provides an endpoint for accessing a set of pods, allowing fo
   ```sh
   nano kubernetes-config.yaml
   ```
-Look for line: <YOUR IMAGE PATH HERE> and replace with the image url we just created. 
+Look for line: YOUR IMAGE PATH HERE and replace with the image url we just created. 
 Save the file by using **Ctrl + X, Y, Enter**.
 
 5. Authenticate to cluster
