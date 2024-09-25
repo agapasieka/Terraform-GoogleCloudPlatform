@@ -66,9 +66,9 @@ We need the following config files:
 <!-- Task3 -->
 ## Deploy to App Engine 
 
-I will be using a similar app code for App Engine located in **apps/app-engine/** folder. I changed the body message to say: **Hello from App Engine** so we can be sure each deployment succeded. 
+I will be using a similar app code for App Engine located in **apps/app-engine/** folder. I changed the body message to say: **Hello from App Engine** so we can be sure each deployment succeeded. 
 
-Before we create any resources with terraform, verify the region defianed in **terraform.tfvars** file. I used **europe-west1** but you can use any region of your choice. 
+Before we create any resources with terraform, verify the region defined in **terraform.tfvars** file. I used **europe-west1** but you can use any region of your choice. 
 
 Add your **project ID** in **terraform.tfvars**, uncomment the first line to look like below:
 
