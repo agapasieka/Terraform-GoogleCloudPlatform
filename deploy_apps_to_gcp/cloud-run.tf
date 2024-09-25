@@ -2,6 +2,9 @@
 # resource "google_project_service" "cloudrun" {
 #   project = var.project_id
 #   service = "run.googleapis.com"
+# lifecycle {
+#     prevent_destroy = true
+#   }
 # }
 
 # data "google_artifact_registry_docker_image" "cloud_run_image" {
@@ -18,7 +21,7 @@
 #   template {
 #     spec {
 #       containers {
-#         image = data.google_artifact_registry_docker_image.cloud_run_image.id
+#         image = data.google_artifact_registry_docker_image.cloud_run_image.self_link
 #       }
 #     }
 #   }
@@ -50,4 +53,3 @@
 #   description = "The URL of the deployed Cloud Run service"
 #   value       = google_cloud_run_service.cloud_run_service.status[0].url
 # }
-

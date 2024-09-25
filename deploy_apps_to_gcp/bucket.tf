@@ -2,7 +2,9 @@
 # resource "google_project_service" "storage" {
 #   project = var.project_id
 #   service = "storage.googleapis.com"
-# }
+# lifecycle {
+#     prevent_destroy = true
+#   }
 
 # # Creates a Google Cloud Storage bucket for storing application files
 # resource "google_storage_bucket" "app" {
@@ -23,8 +25,8 @@
 # # Archives the application code from the specified directory into a zip file
 # data "archive_file" "function_dist" {
 #   type        = "zip"
-#   source_dir  = "../apps/app-engine"
-#   output_path = "../app/app-engine/app.zip"
+#   source_dir  = "apps/app-engine/"
+#   output_path = "apps/app-engine/app.zip"
 # }
 
 # # Uploads the application zip file to the Google Cloud Storage bucket

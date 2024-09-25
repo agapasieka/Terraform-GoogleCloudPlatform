@@ -2,6 +2,9 @@
 # resource "google_project_service" "artifact_registry" {
 #   project = var.project_id
 #   service = "artifactregistry.googleapis.com"
+# lifecycle {
+#     prevent_destroy = true
+#   }
 # }
 
 # resource "google_artifact_registry_repository" "devops_repo" {

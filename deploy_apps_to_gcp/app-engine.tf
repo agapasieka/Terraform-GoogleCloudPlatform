@@ -2,11 +2,20 @@
 # resource "google_project_service" "appengine" {
 #   project = var.project_id
 #   service = "appengine.googleapis.com"
+# lifecycle {
+#     prevent_destroy = true
+#   }
+# }
+
+# # Create the App Engine application
+# resource "google_app_engine_application" "app" {
+#   project     = var.project_id 
+#   location_id = var.region 
 # }
 
 # resource "google_app_engine_standard_app_version" "v1" {
-#   version_id = 1
-#   service    = "hello-from-app-engine"
+#   version_id = "v1"
+#   service    = "default"
 #   runtime    = "python39"
 
 #   entrypoint {
@@ -31,8 +40,9 @@
 #   delete_service_on_destroy = true
 # }
 
-# # Output for App Engine service URL
-# output "name" {
-#   description = "The URL of the deployed App Engine"
-#   value       = google_app_engine_standard_app_version.v1.name
+
+# # Output the default service URL
+# output "app_engine_service_url" {
+#   value = "https://${google_app_engine_standard_app_version.v1.service}-dot-${google_app_engine_application.app.project}.appspot.com"
+#   description = "The URL of the App Engine service."
 # }
