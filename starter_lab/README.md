@@ -1,9 +1,91 @@
-# Use this template for building labs. 
+<!-- Overview -->
+## Overview
 
-Run these commands to copy files from st
-```
-cd new-lab-directory
-cp -r ~/Documents/github/Terraform-GoogleCloudPlatform/starter_lab/* .
-cp -r ~/Documents/github/Terraform-GoogleCloudPlatform/starter_lab/.gitignore .
-cp -r ~/Documents/github/Terraform-GoogleCloudPlatform/starter_lab/.terraform-version .
-```
+
+<!-- Task1 -->
+## 
+  ```sh
+
+  ```
+
+<!-- Task2 -->
+## 
+
+1. 
+  ```sh
+  
+  ```  
+
+2. 
+  ```sh
+  
+  ```
+
+3. 
+  ```sh
+  
+  ``` 
+
+4. 
+  ```sh
+
+  ```
+
+5. 
+  ```sh
+  
+  ``` 
+
+<!-- Task3 -->
+## 
+
+1. 
+  ```sh
+
+  ```
+
+2. 
+ ```sh
+  
+ ```   
+
+3. 
+  ```sh
+   
+  ```
+
+4. 
+  ```sh
+   
+  ```
+
+5. 
+ ```sh
+   
+ ```
+
+<!-- Task3 -->
+## 
+1. 
+ ```sh
+ 
+  ``` 
+
+2. 
+ ```sh
+
+  ```
+
+3.  
+  ```sh
+   
+  ```
+
+4. 
+  ```sh
+  
+  ```
+
+
+
+## The End
